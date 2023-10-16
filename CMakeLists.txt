@@ -36,6 +36,11 @@ target_include_directories(entity_management PUBLIC
   $<INSTALL_INTERFACE:include>)
 
 
+rclcpp_components_register_node(entity_management
+  PLUGIN "conceptio_core::EntityManagementNode"
+  EXECUTABLE conceptio_core
+)
+
 target_link_libraries(entity_management
     ${PahoMqttC_LIBRARY}
     ${PahoMqttCpp_LIBRARY}
@@ -56,6 +61,12 @@ target_compile_features(entity_management PUBLIC c_std_99 cxx_std_17)  # Require
 # install target
 install(TARGETS entity_management
   DESTINATION lib/${PROJECT_NAME})
+
+install(
+    DIRECTORY launch
+    DESTINATION share/${PROJECT_NAME}
+  )
+
 
 # enable testing
 if(BUILD_TESTING)
