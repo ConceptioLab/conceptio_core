@@ -31,7 +31,7 @@ RCLCPP_COMPONENTS_REGISTER_NODE(EntityManagementNode)
 
 EntityManagementNode::EntityManagementNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions()) : Node("entity_management_node", options)
 {
-    entity_updater_pub = this->create_publisher<conceptio_interfaces::msg::ArenaEntities>("arena_entities", 10);
+    entity_updater_pub = this->create_publisher<conceptio_interfaces::msg::ArenaEntities>("/conceptio/arena/entity_updates", 10);
     entity_list_srv = this->create_service<conceptio_interfaces::srv::RequestArenaEntityList>("request_arena_entity_list", 
         std::bind(&EntityManagementNode::entity_list_srv_callback, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     
