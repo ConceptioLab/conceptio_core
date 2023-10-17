@@ -28,7 +28,7 @@ find_library(PahoMqttCpp_LIBRARY libpaho-mqttpp3.so.1 REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 # add source files
-add_library(entity_management src/entity_management.cpp)
+add_executable(entity_management src/entity_management.cpp)
 
 # set include directories for the target
 target_include_directories(entity_management PUBLIC
@@ -36,10 +36,10 @@ target_include_directories(entity_management PUBLIC
   $<INSTALL_INTERFACE:include>)
 
 
-rclcpp_components_register_node(entity_management
-  PLUGIN "conceptio_core::EntityManagementNode"
-  EXECUTABLE conceptio_core
-)
+#rclcpp_components_register_node(entity_management
+#  PLUGIN "conceptio_core::EntityManagementNode"
+#  EXECUTABLE conceptio_core
+#)
 
 target_link_libraries(entity_management
     ${PahoMqttC_LIBRARY}

@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="conceptio_core" exec="conceptio_core" name="entity_management_node" output="screen">
+  <node pkg="conceptio_core" exec="entity_management" name="entity_management_node" output="screen">
   </node>
 
 </launch>

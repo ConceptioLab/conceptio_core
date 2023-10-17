@@ -1,0 +1,3 @@
+[submodule "conceptio_interfaces"]
+	path = conceptio_interfaces
+	url = https://github.com/ConceptioLab/conceptio_interfaces.git

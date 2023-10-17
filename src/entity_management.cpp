@@ -29,7 +29,7 @@ SOFTWARE.
 #include "rclcpp_components/register_node_macro.hpp"
 RCLCPP_COMPONENTS_REGISTER_NODE(EntityManagementNode)
 
-EntityManagementNode::EntityManagementNode(const rclcpp::NodeOptions& options) : Node("entity_management_node", options)
+EntityManagementNode::EntityManagementNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions()) : Node("entity_management_node", options)
 {
     entity_updater_pub = this->create_publisher<conceptio_interfaces::msg::ArenaEntities>("arena_entities", 10);
     entity_list_srv = this->create_service<conceptio_interfaces::srv::RequestArenaEntityList>("request_arena_entity_list", 
@@ -77,6 +77,10 @@ void EntityManagementNode::entity_list_srv_callback(
 {
     (void)request_header;
     (void)request;
+    //for(auto& entity : entity_map){
+    //    response->entity_list.push_back(entity.second);
+    //}
+
    
 }
 
@@ -368,4 +372,11 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
       entity_node->publish_entity_update(entity);
     }
   }
+}
+
+int main (int argc, char* argv[]){
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<EntityManagementNode>());
+  rclcpp::shutdown();
+  return 0;
 }
