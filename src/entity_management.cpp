@@ -158,7 +158,7 @@ void EntityManagementNode::forward_parameters_to_mqtt(MqttClient &mqtt_client)
 
   // load broker parameters from parameter server
   std::string broker_tls_ca_certificate;
-  loadParameter<std::string>("broker.host", mqtt_client.broker_config_.host, "localhost");
+  loadParameter<std::string>("broker.host", mqtt_client.broker_config_.host, "emqx");
   loadParameter<int>("broker.port", mqtt_client.broker_config_.port, 1883);
   if (loadParameter<std::string>("broker.user", mqtt_client.broker_config_.user)) {
     loadParameter<std::string>("broker.pass", mqtt_client.broker_config_.pass, "");

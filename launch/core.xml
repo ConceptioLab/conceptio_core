@@ -1,5 +1,7 @@
 <launch>
-  <node pkg="conceptio_core" exec="entity_management" name="entity_management_node" output="screen">
-  </node>
+  <arg name="params_file" default="$(find-pkg-share conceptio_core)/config/params.yaml" />
 
+  <node pkg="conceptio_core" exec="entity_management" name="entity_management_node" output="screen">
+    <param from="$(var params_file)" />
+  </node>
 </launch>
