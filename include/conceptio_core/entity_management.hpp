@@ -33,6 +33,7 @@ friend class MqttClient;
     struct Entity{
         std::string entity_name;
         std::string entity_uuid;
+        std::string entity_visual_definition;
         EntityType entity_type;
         EntityDomain entity_domain;
         int64_t last_heartbeat;         // Last epoch-based timestamp in nanoseconds
