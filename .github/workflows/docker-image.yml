@@ -1,4 +1,4 @@
-name: Conceptio Core Docker Image CI
+name: Conceptio Core Docker Image   
 
 on:
   push:
