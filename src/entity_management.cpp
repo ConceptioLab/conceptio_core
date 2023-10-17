@@ -368,6 +368,7 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
       entity.entity_uuid = doc["entity_uuid"].GetString();
       entity.entity_domain = static_cast<EntityManagementNode::EntityDomain>\
         (doc["entity_domain"].GetInt());
+      entity.entity_visual_definition = doc["entity_visual_definition"].GetString();
       entity.last_heartbeat = entity_node->get_clock()->now().nanoseconds();
       entity_node->publish_entity_update(entity);
     }
