@@ -346,7 +346,6 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
     builtin_interfaces::msg::Time(rclcpp::Clock(RCL_SYSTEM_TIME).now()));
 
   std::string mqtt_topic = mqtt_msg->get_topic();
-  std::cout << "Message arrived on topic '" << mqtt_topic << "'" << std::endl;
   size_t lastSlashPos = mqtt_topic.find_last_of('/');
   std::string last_topic = lastSlashPos!=std::string::npos?mqtt_topic.substr(lastSlashPos+1):"";
   auto& payload = mqtt_msg->get_payload_ref();
@@ -370,7 +369,7 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
         (doc["entity_domain"].GetInt());
       entity.entity_visual_definition = doc["entity_visual_definition"].GetString();
       entity.last_heartbeat = entity_node->get_clock()->now().nanoseconds();
-      entity_node->publish_entity_update(entity);
+      //entity_node->publish_entity_update(entity);
     }
   }
 }
