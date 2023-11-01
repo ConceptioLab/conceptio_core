@@ -359,13 +359,16 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
   }
   if(entity_node){
     if(last_topic == "heartbeat"){
+      
       EntityManagementNode::Entity& entity = entity_node->entity_map[mqtt_topic];
       entity.entity_name =doc["entity_name"].GetString();
-      entity.entity_type = static_cast<EntityManagementNode::EntityType>\
-        (doc["entity_type"].GetInt());
+      
+      //entity.entity_type = static_cast<EntityManagementNode::EntityType>\
+        (doc["entity_type"].GetString());
       entity.entity_uuid = doc["entity_uuid"].GetString();
-      entity.entity_domain = static_cast<EntityManagementNode::EntityDomain>\
-        (doc["entity_domain"].GetInt());
+      //entity.entity_domain = static_cast<EntityManagementNode::EntityDomain>\
+        (doc["entity_domain"].GetString());
+      
       entity.entity_visual_definition = doc["entity_visual_definition"].GetString();
       entity.last_heartbeat = entity_node->get_clock()->now().nanoseconds();
       //entity_node->publish_entity_update(entity);

@@ -1,4 +1,4 @@
-mqtt_client:
+conceptio_core:
   ros__parameters:
     broker:
       host: localhost
