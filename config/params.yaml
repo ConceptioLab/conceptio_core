@@ -1,7 +1,7 @@
 mqtt_client:
   ros__parameters:
     broker:
-      host: emqx
+      host: localhost
       port: 1883
     bridge:
       ros2mqtt:

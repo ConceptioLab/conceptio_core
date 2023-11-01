@@ -31,7 +31,7 @@ RCLCPP_COMPONENTS_REGISTER_NODE(EntityManagementNode)
 
 EntityManagementNode::EntityManagementNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions()) : Node("entity_management_node", options)
 {
-    entity_updater_pub = this->create_publisher<conceptio_interfaces::msg::ArenaEntities>("/conceptio/arena/entity_updates", 10);
+    entity_updater_pub = this->create_publisher<conceptio_interfaces::msg::ArenaEntities>("conceptio/arena/entity_updates", 10);
     entity_list_srv = this->create_service<conceptio_interfaces::srv::RequestArenaEntityList>("request_arena_entity_list", 
         std::bind(&EntityManagementNode::entity_list_srv_callback, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     
@@ -46,7 +46,6 @@ EntityManagementNode::EntityManagementNode(const rclcpp::NodeOptions& options = 
         RCLCPP_ERROR(get_logger(), "Failed to connect MQTT client");
         return;
     }
-    RCLCPP_INFO(get_logger(), "Successfully connected to MQTT broker");
     mqtt_client->entity_node = this;
     entity_check_timer = this->create_wall_timer(std::chrono::seconds(15), std::bind(&EntityManagementNode::check_entities, this));
 
@@ -312,7 +311,7 @@ void MqttClient::connected(const std::string& cause)
   is_connected_ = true;
   std::cout << "Connected to broker: " << cause << std::endl;
   // subscribe to heartbeats
-  client_->subscribe("/conceptio/unit/+/+/+/heartbeat", 1);
+  client_->subscribe("conceptio/unit/+/+/+/heartbeat", 1);
 }
 
 void MqttClient::connection_lost(const std::string& cause)
