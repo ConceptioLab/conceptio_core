@@ -23,11 +23,12 @@ friend class MqttClient;
     };
 
     enum EntityDomain{
+        OTHER,
+        LAND,
         AIR,
-        GROUND,
-        MARITIME,
-        SPACE,
-        CYBER
+        SURFACE,
+        SUBSURFACE,
+        SPACE
     };
 
     struct Entity{

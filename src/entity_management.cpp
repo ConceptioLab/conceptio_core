@@ -370,7 +370,8 @@ void MqttClient::message_arrived(mqtt::const_message_ptr mqtt_msg){
         (doc["entity_domain"].GetString());
       
       entity.entity_visual_definition = doc["entity_visual_definition"].GetString();
-      entity.last_heartbeat = entity_node->get_clock()->now().nanoseconds();
+      // Clock in miliseconds
+      entity.last_heartbeat = entity_node->get_clock()->now().nanoseconds() / 1000000;
       //entity_node->publish_entity_update(entity);
     }
   }
