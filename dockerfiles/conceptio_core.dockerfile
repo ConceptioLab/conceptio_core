@@ -32,7 +32,7 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
 	colcon build
 	
 HEALTHCHECK --interval=10s --timeout=4s \
-	CMD ./healthcheck.sh 
+	CMD ./dockerfiles/healthcheck.sh 
 
 RUN ["chmod", "+x", "dockerfiles/entrypoint.sh"]
 RUN ["chmod", "+x", "dockerfiles/healthcheck.sh"]
