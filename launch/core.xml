@@ -1,7 +1,9 @@
 <launch>
-  <arg name="params_file" default="$(find-pkg-share conceptio_core)/config/params.yaml" />
+  <arg name="params_file" default="$(find-pkg-share conceptio_core)/config/params.yaml"  />
 
   <node pkg="conceptio_core" exec="entity_management" name="entity_management_node" output="screen">
-    <param from="$(var params_file)" />
+    <param from="$(var params_file)"/>
+    <param name="broker.host" value="$(env MQTT_HOST_ENV)" />
+    <param name="broker.port" value="$(env MQTT_PORT_ENV)" />
   </node>
 </launch>

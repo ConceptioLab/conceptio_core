@@ -1,25 +1,25 @@
-conceptio_core:
+/**:
   ros__parameters:
     broker:
-      host: localhost
-      port: 1883
+      host: ${MQTT_HOST_ENV}
+      port: ${MQTT_PORT_ENV}
       user: ""
       pass: ""
       tls:
         enabled: false
         ca_certificate: ""
     client:
-      id:
+      id: ""
       buffer:
-        size:
-        directory:
+        size: 0
+        directory: ""
       last_will:
         topic: ""
         message: ""
         qos: 0
         retained: false
       clean_session: true
-      keep_alive_interval: 60
+      keep_alive_interval: 60.0
       max_inflight: 100
       tls:
         certificate: ""

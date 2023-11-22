@@ -47,6 +47,12 @@ friend class MqttClient;
     bool loadParameter(const std::string& key, T& value) {
         bool found = get_parameter(key, value);
         bool is_numeric = std::is_arithmetic<T>::value;
+        //if (found && is_numeric)
+            //RCLCPP_DEBUG(get_logger(), "Retrieved parameter '%s' = '%s'", key.c_str(),
+            //    std::to_string(value).c_str());
+        //else
+            //RCLCPP_DEBUG(get_logger(), "Retrieved parameter '%s' = '%s'", key.c_str(),
+             //   value);
         return found;
     }
     template <typename T>
