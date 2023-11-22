@@ -3,14 +3,27 @@ conceptio_core:
     broker:
       host: localhost
       port: 1883
-    bridge:
-      ros2mqtt:
-        ros_topics: 
-          - /ping/ros
-        /ping/ros:
-          mqtt_topic: pingpong/ros
-      mqtt2ros:
-        mqtt_topics: 
-          - pingpong/ros
-        pingpong/ros:
-          ros_topic: /pong/ros
+      user: ""
+      pass: ""
+      tls:
+        enabled: false
+        ca_certificate: ""
+    client:
+      id:
+      buffer:
+        size:
+        directory:
+      last_will:
+        topic: ""
+        message: ""
+        qos: 0
+        retained: false
+      clean_session: true
+      keep_alive_interval: 60
+      max_inflight: 100
+      tls:
+        certificate: ""
+        key: ""
+        password: ""
+        version: 0
+        alpn_protos: [""]

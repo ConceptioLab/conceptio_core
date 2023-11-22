@@ -311,7 +311,7 @@ void MqttClient::connected(const std::string& cause)
   is_connected_ = true;
   std::cout << "Connected to broker: " << cause << std::endl;
   // subscribe to heartbeats
-  client_->subscribe("conceptio/unit/+/+/+/heartbeat", 1);
+  client_->subscribe("conceptio/unit/+/+/+/heartbeat", 0);
 }
 
 void MqttClient::connection_lost(const std::string& cause)
